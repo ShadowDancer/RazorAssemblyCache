@@ -1,0 +1,21 @@
+﻿{
+  "version": "0.0.1-alpha",
+  "authors": ["ShadowDancer"],
+
+  "dependencies": {
+    "Microsoft.AspNetCore.Mvc": "1.1.0",
+    "Microsoft.AspNetCore.Hosting": "1.1.0"
+    //"NETStandard.Library": "1.6.1"
+  },
+
+  "frameworks": {
+    //"netstandard1.6.1": {
+    //  "dependencies": {
+    //    "System.Runtime.Loader": "4.3.0"
+    //  }
+    //}
+    "net451": {
+    
+    }
+  }
+}
