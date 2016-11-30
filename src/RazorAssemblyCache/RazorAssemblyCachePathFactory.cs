@@ -17,7 +17,11 @@ namespace RazorAssemblyCache
 
         public CachePathMaker CreatePathWith(string relativeViewPath)
         {
-            var path = CacheDirectory + relativeViewPath.Replace("/", "\\");
+            if (relativeViewPath.StartsWith("/"))
+            {
+                relativeViewPath = relativeViewPath.Substring(1);
+            }
+            var path = Path.Combine(CacheDirectory, relativeViewPath.Replace("/", "\\"));
             var directory = Path.GetDirectoryName(path);
             if (!Directory.Exists(directory))
             {
