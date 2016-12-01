@@ -7,11 +7,12 @@ Or maybe you miss temporary aspnet files?
 Ye, there is razor-precompile tooling, but it is fun for production, not for developers. So here it is - library that solves this problem. Compiled views are cached on disk, and then loaded on next startup. For WebApplication template I've managed to cut startup time from 6 to 1.2 seconds. Nice, huh?
 
 What what about downsides:
-- it's one big hack
-- atm you have to clear cache manually
-- there probably are problems that cannot be easly solved
+- it's one big hack (RoslynCompilationService is copied from mvc repository - if it changes we're doomed!!!)
+- doesn't work on core framework (netcoreapp)
+- doesn't work with embedded views (such views are ignored, and will not be cached)
+- there probably are problems that cannot be easly solved, probably something with changing dependences of cached stuff
 
-Atm this is alpha-alpha-alpha version, supported only for fullframework. Just for benchmarking purposes.
+Atm this is alpha-alpha-alpha version, supported only for fullframework. Currently I am testing this on myself ;)
 
 # TL;DR
 Speed up WebApplication startup time with saving compiled razor views on disk!

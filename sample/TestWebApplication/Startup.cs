@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,8 +9,11 @@ namespace RazorCompilerCache
 {
     public class Startup
     {
+        private readonly IHostingEnvironment _env;
+
         public Startup(IHostingEnvironment env)
         {
+            _env = env;
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -28,7 +27,21 @@ namespace RazorCompilerCache
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.UseRazorAssemblyCache();
+            if (_env.IsDevelopment())
+            {
+                // You should use this only for development work
+                // If you want to speed up production better use precompilation tool!
+                services.UseRazorAssemblyCache();
+                
+                // You can configure application to use any directory as it's cache
+                // But beware, as one directory cannot be used by more than one applications
+                /*
+                services.UseRazorAssemblyCache(options =>
+                    options.CacheDirectory = "C:\\Temp\\AspNet Temporary Internet Files\\TestApp"
+                    );
+                */
+            }
+            
 
             // Add framework services.
             services.AddMvc();

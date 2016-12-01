@@ -1,16 +1,24 @@
+using System;
 using System.IO;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Options;
+using RazorAssemblyCache.Options;
 
-namespace RazorAssemblyCache
+namespace RazorAssemblyCache.Core
 {
     /// <summary>
     ///     Creates oaths for resources
     /// </summary>
-    public class RazorAssemblyCachePathFactory
+    internal class CachePathFactory
     {
-        public RazorAssemblyCachePathFactory(IHostingEnvironment env)
+        public CachePathFactory(IOptions<RazorAssemblyCacheOptions> options)
         {
-            CacheDirectory = Path.Combine(env.ContentRootPath, "compiler-cache");
+            if (options.Value.CacheDirectory == null)
+            {
+                throw new InvalidOperationException(
+                    "Invalid directory configured in " + nameof(RazorAssemblyCacheOptions));
+            }
+
+            CacheDirectory = options.Value.CacheDirectory;
         }
 
         private string CacheDirectory { get; }
@@ -21,6 +29,7 @@ namespace RazorAssemblyCache
             {
                 relativeViewPath = relativeViewPath.Substring(1);
             }
+
             var path = Path.Combine(CacheDirectory, relativeViewPath.Replace("/", "\\"));
             var directory = Path.GetDirectoryName(path);
             if (!Directory.Exists(directory))
@@ -46,12 +55,7 @@ namespace RazorAssemblyCache
 
             public string ForSymbols()
             {
-                return _viewPath + ".pkb";
-            }
-
-            public string ForHash()
-            {
-                return _viewPath + ".sha";
+                return _viewPath + ".pdb";
             }
         }
     }
