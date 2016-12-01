@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/wrdd3quo4awsefej/branch/master?svg=true)](https://ci.appveyor.com/project/ShadowDancer/razorassemblycache/branch/master)
+
 # Hello internet!
 
 Have You asked Yourself why my shiny .net core application takes 6 seconds to start on my shiny ssd, and 12 core processor? Well no? Check in trace mode - razor view compiling takes most of that time.

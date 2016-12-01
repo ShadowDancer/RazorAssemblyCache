@@ -1,0 +1,7 @@
+os: Visual Studio 2015
+init:
+  - git config --global core.autocrlf input
+install:
+  - dotnet restore
+build_script:
+  - cmd: cd sample/TestWebApplication/ && dotnet build
