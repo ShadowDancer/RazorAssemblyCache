@@ -2,7 +2,6 @@
   "dependencies": {
     "Microsoft.AspNetCore.Diagnostics": "1.1.0",
     "Microsoft.AspNetCore.Mvc": "1.1.0",
-    "Microsoft.AspNetCore.Razor.Tools": "1.1.0-preview4-final",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.1.0",
     "Microsoft.AspNetCore.Server.Kestrel": "1.1.0",
     "Microsoft.AspNetCore.StaticFiles": "1.1.0",
@@ -11,7 +10,11 @@
     "Microsoft.Extensions.Logging": "1.1.0",
     "Microsoft.Extensions.Logging.Console": "1.1.0",
     "Microsoft.Extensions.Logging.Debug": "1.1.0",
-    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.1.0"
+    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.1.0",
+    "Microsoft.AspNetCore.Razor.Tools": "1.1.0-preview4-final",
+    "RazorAssemblyCache": {
+      "target": "project"
+    }
   },
 
   "tools": {
@@ -26,11 +29,16 @@
   },
 
   "frameworks": {
+    "netcoreapp1.1": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.1.0"
+        }
+      }
+    },
     "net461": {
       "dependencies": {
-        "RazorAssemblyCache": {
-          "target": "project"
-        }
       }
     }
   },
