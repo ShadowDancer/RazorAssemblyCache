@@ -83,18 +83,44 @@ namespace RazorAssemblyCache.CompilerCache
         /// <returns></returns>
         private static CompilationResult ReadCachedCompilationFromDisk(string assemblyPath, string symbolsPath)
         {
-            var assemblyData = File.ReadAllBytes(assemblyPath);
-            Assembly assembly;
-            if (File.Exists(symbolsPath))
-            {
-                var symbolData = File.ReadAllBytes(symbolsPath);
-                assembly = Assembly.Load(assemblyData, symbolData);
-            }
-            else
-            {
-                assembly = Assembly.Load(assemblyData);
-            }
+            Assembly assembly = null;
 
+            using (var assemblyStream = new MemoryStream())
+
+            {
+                using (var assemblyFile = File.OpenRead(assemblyPath))
+                {
+                    assemblyFile.CopyTo(assemblyStream);
+                    assemblyStream.Seek(0, SeekOrigin.Begin);
+                }
+
+                if (File.Exists(symbolsPath))
+                {
+                    using (var symbolsStream = new MemoryStream())
+                    {
+                        using (var symbolsFile = File.OpenRead(symbolsPath))
+                        {
+                            symbolsFile.CopyTo(symbolsStream);
+                            symbolsStream.Seek(0, SeekOrigin.Begin);
+                        }
+                        assembly =
+#if NET451
+                            Assembly.Load(assemblyStream.ToArray(), symbolsStream.ToArray());
+#else
+                            System.Runtime.Loader.AssemblyLoadContext.Default.LoadFromStream(assemblyStream, symbolsStream);
+#endif
+                    }
+                }
+                else
+                {
+                    assembly =
+#if NET451
+                        Assembly.Load(assemblyStream.ToArray());
+#else
+                        System.Runtime.Loader.AssemblyLoadContext.Default.LoadFromStream(assemblyStream);
+#endif
+                }
+            }
             var cachedCompilationResult =
                 new CompilationResult(assembly.GetExportedTypes().FirstOrDefault(a => !a.IsNested));
             return cachedCompilationResult;
