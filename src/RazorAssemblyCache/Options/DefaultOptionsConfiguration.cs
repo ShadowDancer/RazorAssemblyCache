@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace RazorAssemblyCache.Options
 {
-    public class DefaultOptionsConfiguration : IConfigureOptions<RazorAssemblyCacheOptions>
+    internal class DefaultOptionsConfiguration : IConfigureOptions<RazorAssemblyCacheOptions>
     {
         private readonly IHostingEnvironment _hostingEnvironment;
 

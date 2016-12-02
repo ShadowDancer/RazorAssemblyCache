@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc.Razor.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using RazorAssemblyCache.CompilerCache;
-using RazorAssemblyCache.Core;
 using RazorAssemblyCache.Options;
 using RazorAssemblyCache.RoslynCompilationService;
+using RazorAssemblyCache.Utilities;
 
 namespace RazorAssemblyCache
 {
@@ -16,7 +16,7 @@ namespace RazorAssemblyCache
         ///     Cache temporary razor files. By default files are cached in ContentRootDirectory
         /// </summary>
         /// <param name="services"></param>
-        public static void UseRazorAssemblyCache(this IServiceCollection services)
+        public static void AddRazorAssemblyCache(this IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
@@ -29,7 +29,7 @@ namespace RazorAssemblyCache
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configure">Lambda used to configure RazorAssemblyCacheOptions</param>
-        public static void UseRazorAssemblyCache(this IServiceCollection services,
+        public static void AddRazorAssemblyCache(this IServiceCollection services,
             Action<RazorAssemblyCacheOptions> configure)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8F6F9645-1AE8-4DFB-99A2-D5F7CBC0B624}"
 EndProject
@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{EF509E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{74596D50-4D1A-442E-AA85-303436FD7901}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TestWebApplications", "sample\TestWebApplication\TestWebApplications.xproj", "{97EAE0D7-B8BC-44EE-ACCC-DAC4F308FC24}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TestWebApplication", "sample\TestWebApplication\TestWebApplication.xproj", "{97EAE0D7-B8BC-44EE-ACCC-DAC4F308FC24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

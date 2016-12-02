@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Razor.Compilation;
 using Microsoft.AspNetCore.Mvc.Razor.Internal;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
-using RazorAssemblyCache.Core;
+using RazorAssemblyCache.Utilities;
 
 namespace RazorAssemblyCache.CompilerCache
 {

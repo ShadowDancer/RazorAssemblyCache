@@ -2,11 +2,11 @@
 
 # Hello internet!
 
-Have You asked Yourself why my shiny .net core application takes 6 seconds to start on my shiny ssd, and 12 core processor? Well no? Check in trace mode - razor view compiling takes most of that time.
+Have You asked Yourself why my shiny .net core application takes 6 seconds to start on machine with ssd, and 12 core processor? Well no? Check in trace mode - razor view compiling takes most of that time.
 
 Or maybe you miss temporary aspnet files?
 
-Ye, there is razor-precompile tooling, but it is fun for production, not for developers. So here it is - library that solves this problem. Compiled views are cached on disk, and then loaded on next startup. For WebApplication template I've managed to cut startup time from 6 to 1.2 seconds. Nice, huh?
+Ye, there is razor-precompile tooling, but it is fun on production, not during development. So here it is - library that solves this problem. Compiled views are cached on disk, and then loaded on next startup. For WebApplication template I've managed to cut startup time by 3/4. Nice, huh?
 
 What what about downsides:
 - it's one big hack (RoslynCompilationService is copied from mvc repository - if it changes we're doomed!!!)

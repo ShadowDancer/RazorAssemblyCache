@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - RazorCompilerCache</title>
+    <title>@ViewData["Title"] - TestWebApplication</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-controller="Home" asp-action="Index" class="navbar-brand">RazorCompilerCache</a>
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand">TestWebApplication</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -39,9 +39,12 @@
     </div>
     <div class="container body-content">
         @RenderBody()
+
+        @Html.Partial("_StartupTime")
+        
         <hr />
         <footer>
-            <p>&copy; 2016 - RazorCompilerCache</p>
+            <p>&copy; 2016 - TestWebApplication</p>
         </footer>
     </div>
 

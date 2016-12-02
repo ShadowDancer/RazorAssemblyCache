@@ -18,7 +18,7 @@ using Microsoft.CodeAnalysis.Text;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using RazorAssemblyCache.Core;
+using RazorAssemblyCache.Utilities;
 
 namespace RazorAssemblyCache.RoslynCompilationService
 {

@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.Extensions.Options;
 using RazorAssemblyCache.Options;
 
-namespace RazorAssemblyCache.Core
+namespace RazorAssemblyCache.Utilities
 {
     /// <summary>
     ///     Creates oaths for resources

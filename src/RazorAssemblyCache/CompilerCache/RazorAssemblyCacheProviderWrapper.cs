@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Razor.Internal;
 using Microsoft.Extensions.Logging;
-using RazorAssemblyCache.Core;
+using RazorAssemblyCache.Utilities;
 
 namespace RazorAssemblyCache.CompilerCache
 {

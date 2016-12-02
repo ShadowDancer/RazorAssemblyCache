@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RazorAssemblyCache;
 
-namespace RazorCompilerCache
+namespace TestWebApplication
 {
     public class Startup
     {
@@ -31,17 +31,17 @@ namespace RazorCompilerCache
             {
                 // You should use this only for development work
                 // If you want to speed up production better use precompilation tool!
-                services.UseRazorAssemblyCache();
-                
+                services.AddRazorAssemblyCache();
+
                 // You can configure application to use any directory as it's cache
-                // But beware, as one directory cannot be used by more than one applications
+                // But beware, as one directory cannot be used by more than one application!
                 /*
-                services.UseRazorAssemblyCache(options =>
+                services.AddRazorAssemblyCache(options =>
                     options.CacheDirectory = "C:\\Temp\\AspNet Temporary Internet Files\\TestApp"
                     );
                 */
             }
-            
+
 
             // Add framework services.
             services.AddMvc();
@@ -64,7 +64,6 @@ namespace RazorCompilerCache
             }
 
             app.UseStaticFiles();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
